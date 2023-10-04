@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>On Page Assistant</title>
+  </head>
+  <body>
+    <div id="avatar-wrap">
+      <canvas id="bg"></canvas>
+      <div id="avatar-comment"></div>
+    </div>
+    <div class="button_types">
+      <div>
+        <button class="button_style"  id="1" onclick="getcord(1)">Sign Up</button>
+      </div>
+      <div>
+        <button class="button_style" id="2" onclick="getcord(2)">Login</button>
+      </div>
+      <div><button class="button_style" id="3" onclick="getcord(3)">Learn More</button></div>
+      <div>
+        <button class="button_style"  id="4" onclick="getcord(4)">Contact Us</button>
+      </div>
+      <div><button class="button_style"  id="5" onclick="getcord(5)">Explore</button></div>
+      <div>
+        <button class="button_style" id="6" onclick="getcord(6)">Get Started</button>
+      </div>
+
+    </div>
+
+    <script>
+      function getcord(id) {
+        const btncord = document.getElementById(id);
+        const rect = btncord.getBoundingClientRect();
+        const btnx = rect.left;
+        const btny = rect.top;
+        console.log(btnx, btny);
+
+        const avatarcord = document.getElementById("avatar-wrap");
+        avatarcord.style.top = "0px";
+        avatarcord.style.left = "0px";
+        const newXposition = btnx + 70;
+        const newYposition = btny - 10;
+
+        // set new cords.
+        avatarcord.style.transition = "all 1.3s ease-in-out";
+        avatarcord.style.top = `${newYposition}px`;
+        avatarcord.style.left = `${newXposition}px`;
+
+        const comment = document.getElementById("avatar-comment");
+        comment.style.display = "block";
+
+        const btnInnerText = document.getElementById(id).innerText;
+
+        while (comment.firstChild) {
+          comment.removeChild(comment.firstChild);
+        }
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = `This is a button that ${btnInnerText}'s an element`;
+
+        comment.appendChild(paragraph);
+      }
+    </script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
