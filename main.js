@@ -33,7 +33,7 @@ window.addEventListener("load", function () {
   var modelReady = false;
 
   var loader = new FBXLoader();
-  loader.load("/StandingRunForward.fbx", function (object) {
+  loader.load("/HipHopDancing.fbx", function (object) {
     object.scale.set(0.007, 0.007, 0.007);
     object.position.set(0, 0, 0);
 
